@@ -34,7 +34,8 @@ img{
 
 .title{
   font-size: 20px;
-  background-color: rgb(97, 64, 128);
+  background-color: rgb(73, 215, 250);
+  border-radius: 10px;
   color: white;
   text-align: center;
   margin:20px;
@@ -123,4 +124,8 @@ img{
     border-radius:50px;
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
+}
+
+.customer-service-info {
+  font-size: x-large;
 }
