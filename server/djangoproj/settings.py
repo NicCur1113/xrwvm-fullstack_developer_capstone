@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,13 +37,14 @@ REST_FRAMEWORK = {
 # Application definition
 
 INSTALLED_APPS = [
-    'djangoapp.apps.DjangoappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'djangoapp',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +63,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
              os.path.join(BASE_DIR,'frontend/static'),
+             os.path.join(BASE_DIR, 'frontend/build'),
+             os.path.join(BASE_DIR, 'frontend/build/static'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -137,6 +139,8 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-     os.path.join(BASE_DIR,'frontend/static')
+     os.path.join(BASE_DIR,'frontend/static'),
+     os.path.join(BASE_DIR, 'frontend/build'),
+     os.path.join(BASE_DIR, 'frontend/build/static'),
 ]
 
