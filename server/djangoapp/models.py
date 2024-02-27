@@ -1,7 +1,7 @@
 # Uncomment the following imports before adding the Model code
 
 from django.db import models
-#from django.utils.timezone import now
+from django.utils.timezone import now
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
@@ -28,7 +28,6 @@ class CarModel(models.Model):
         ('SEDAN', 'Sedan'),
         ('SUV', 'SUV'),
         ('WAGON', 'Wagon'),
-        {'SPORTS_CAR', 'Sports_Car'}
         # Add more choices as required
     ]
     type = models.CharField(max_length=10, choices=CAR_TYPES, default='SUV')
@@ -38,5 +37,6 @@ class CarModel(models.Model):
             MinValueValidator(2015)
         ])
     # Other fields as needed
+
     def __str__(self):
         return self.name  # Return the name as the string representation

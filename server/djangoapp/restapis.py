@@ -2,6 +2,7 @@
 import requests
 import os
 import json 
+from django.http import JsonResponse
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -48,6 +49,13 @@ def add_review(request):
             return JsonResponse({"status":401,"message":"Error in posting review"})
     else:
         return JsonResponse({"status":403,"message":"Unauthorized"})
+
+def get_dealers(request, dealer_id):
+    if(dealer_id):
+        endpoint = "/fetchDealer/" + str(dealer_id)
+        dealership = get_request(endpoint)
+        return JsonResponse({"status":200, "dealer":dealership})
+    JsonResponse({"status":400, "dealers":"Bad Request"})
 
 def analyze_review_sentiments(text):
     request_url = sentiment_analyzer_url+"analyze/"+text
