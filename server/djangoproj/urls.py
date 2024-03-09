@@ -21,8 +21,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('manifest.json', TemplateView.as_view(template_name='manifest.json', 
-                                               content_type='application/json'), name='manifest.json'),
+    path('manifest.json', TemplateView.as_view(template_name='manifest.json',
+    content_type='application/json'), name='manifest.json'),
     path('djangoapp/', include('djangoapp.urls')),
     path('', TemplateView.as_view(template_name="Home.html")),
     path('about/', TemplateView.as_view(template_name="About.html")),
@@ -30,7 +30,7 @@ urlpatterns = [
     path('login/', TemplateView.as_view(template_name="index.html")),
     path('register/', TemplateView.as_view(template_name="index.html")),
     path('dealers/', TemplateView.as_view(template_name="index.html")),
-    path('dealer/<int:dealer_id>', 
+    path('dealer/<int:dealer_id>',
          TemplateView.as_view(template_name="index.html")),
     path('postreview/<int:dealer_id>',
          TemplateView.as_view(template_name="index.html")),
