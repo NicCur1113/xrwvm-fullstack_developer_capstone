@@ -43,7 +43,7 @@ def post_review(data_dict):
 
 def add_review(request):
     if (request.user.is_anonymous is False):
-        data = json.loads(request.body)
+        # data = json.loads(request.body)
         try:
             # response = post_review(data)
             return JsonResponse({"status": 200})
