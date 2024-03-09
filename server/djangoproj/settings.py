@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'https://niccur416-8000.theiadockernext-' /
                  '1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/']
-CSRF_TRUSTED_ORIGINS = ['https://niccur416-8000.theiadockernext-1-labs-prod' / 
+CSRF_TRUSTED_ORIGINS = ['https://niccur416-8000.theiadockernext-1-labs-prod' /
                         '-theiak8s-4-tor01.proxy.cognitiveclass.ai/']
 
 REST_FRAMEWORK = {
@@ -98,7 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME':
         'django.contrib.auth.password_validation.' /
         'UserAttributeSimilarityValidator',
-    }, 
+    },
     {
         'NAME':
         'django.contrib.auth.password_validation.MinimumLengthValidator',
@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
         'django.contrib.auth.password_validation.CommonPasswordValidator',
-    }, 
+    },
     {
         'NAME':
         'django.contrib.auth.password_validation.NumericPasswordValidator',

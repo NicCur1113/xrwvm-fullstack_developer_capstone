@@ -10,7 +10,7 @@ load_dotenv()
 backend_url = os.getenv(
     'backend_url', default="http://localhost:3030")
 sentiment_analyzer_url = os.getenv(
-    'sentiment_analyzer_url', 
+    'sentiment_analyzer_url',
     default="http://localhost:5050/")
 
 
@@ -50,9 +50,8 @@ def add_review(request):
         except Exception as e:
             print(f"Error: {e}")
     else:
-        return JsonResponse({"status": 403,"message":  \
-                             
-                             "Unauthorized"})
+        return JsonResponse({"status": 403, "message":
+        "Unauthorized"})
 
 
 def get_dealers(request, dealer_id):

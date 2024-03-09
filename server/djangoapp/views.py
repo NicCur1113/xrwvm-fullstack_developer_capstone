@@ -43,6 +43,7 @@ def login_user(request):
 # Create a `logout_request` view to handle sign out request
 # def logout_request(request):
 
+
 def logout(request):
     data = {"userName": ""}
     return JsonResponse(data)
@@ -51,6 +52,7 @@ def logout(request):
 # Create a `registration` view to handle sign up request
 @csrf_exempt
 def registration(request):
+    #
     #context = {}
 
     data = json.loads(request.body)
@@ -60,6 +62,7 @@ def registration(request):
     last_name = data['lastName']
     email = data['email']
     username_exist = False
+    #
     #email_exist = False
     try:
         # Check if user already exists
@@ -72,8 +75,8 @@ def registration(request):
     # If it is a new user
     if not username_exist:
         # Create user in auth_user table
-        user = User.objects.create_user(username=username, 
-        first_name=first_name, last_name=last_name, password=password, email=email)
+        user = User.objects.create_user(username=username,
+            first_name=first_name, last_name=last_name, password=password, email=email)
         # Login the user and redirect to list page
         login(request, user)
         data = {"userName": username, "status": "Authenticated"}
@@ -125,12 +128,12 @@ def get_dealer_reviews(request, dealer_id):
             review_detail['sentiment'] = response['sentiment']
         return JsonResponse({"status": 200, "reviews": reviews})
     else:
-        return JsonResponse({"status": 400,"message": "Bad Request"})
+        return JsonResponse({"status": 400, "message": "Bad Request"})
 
 
 def get_dealer_details(request, dealer_id):
-    if (not dealer_id):
-        return JsonResponse({"status": 400,"message": "Bad Request"})
+    if (dealer_id is None):
+        return JsonResponse({"status": 400, "message": "Bad Request"})
     endpoint = "/fetchDealer/"+str(dealer_id)
     dealership = get_request(endpoint)
     return JsonResponse({"status": 200, "dealer": dealership})
@@ -140,11 +143,12 @@ def add_review(request):
     if (request.user.is_anonymous == False):
         data = json.loads(request.body)
         try:
-            response = post_review(data)
+            #
+            #response = post_review(data)
             return JsonResponse({"status": 200})
-        except:
+        except Exception as e:
             return JsonResponse({"status": 401, "message":
-                                 "Error in posting review"})
+                                 f"Error in posting review {e}"})
     else:
-        return JsonResponse({"status": 403,"message": "Unauthorized"})
+        return JsonResponse({"status": 403, "message": "Unauthorized"})
     
