@@ -18,9 +18,9 @@ def get_request(endpoint, **kwargs):
     params = ""
     if (kwargs):
         for key, value in kwargs.items():
-            params=params+key+"="+value+"&"
+            params = params + key + "=" + value + "&"
 
-    request_url = backend_url+endpoint+"?"+params
+    request_url = backend_url+endpoint + "?" + params
 
     print(f"GET from {request_url}")
     try:
@@ -42,16 +42,16 @@ def post_review(data_dict):
 
 
 def add_review(request):
-    if (request.user.is_anonymous == False):
+    if (request.user.is_anonymous is False):
         data = json.loads(request.body)
         try:
-            response = post_review(data)
+            # response = post_review(data)
             return JsonResponse({"status": 200})
         except Exception as e:
             print(f"Error: {e}")
     else:
         return JsonResponse({"status": 403, "message":
-        "Unauthorized"})
+                            "Unauthorized"})
 
 
 def get_dealers(request, dealer_id):
