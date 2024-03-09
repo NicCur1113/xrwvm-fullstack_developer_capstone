@@ -29,6 +29,7 @@ def get_request(endpoint, **kwargs):
     except:
         # If any error occurs
         print("Network exception occurred")
+        
 
 def post_review(data_dict):
     request_url = backend_url+"/insert_review"
@@ -38,6 +39,7 @@ def post_review(data_dict):
         return response.json()
     except:
         print("Network exception occured.")
+
 
 def add_review(request):
     if(request.user.is_anonymous == False):
@@ -50,12 +52,14 @@ def add_review(request):
     else:
         return JsonResponse({"status":403,"message":"Unauthorized"})
 
+
 def get_dealers(request, dealer_id):
     if(dealer_id):
         endpoint = "/fetchDealer/" + str(dealer_id)
         dealership = get_request(endpoint)
         return JsonResponse({"status":200, "dealer":dealership})
     JsonResponse({"status":400, "dealers":"Bad Request"})
+
 
 def analyze_review_sentiments(text):
     request_url = sentiment_analyzer_url+"analyze/"+text
