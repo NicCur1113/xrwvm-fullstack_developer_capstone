@@ -24,7 +24,7 @@ urlpatterns = [
     path('manifest.json', TemplateView.as_view(template_name='manifest.json',
                                                content_type='application'
                                                '/json'),
-                                              name='manifest.json'),
+                                            name='manifest.json'),
     path('djangoapp/', include('djangoapp.urls')),
     path('', TemplateView.as_view(template_name="Home.html")),
     path('about/', TemplateView.as_view(template_name="About.html")),
