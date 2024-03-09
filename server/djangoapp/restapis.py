@@ -1,7 +1,7 @@
 # Uncomment the imports below before you add the function code
 import requests
 import os
-import json
+# import json
 from django.http import JsonResponse
 from dotenv import load_dotenv
 
